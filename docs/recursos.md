@@ -1,3 +1,7 @@
+---
+description: Os principais recursos do AIShoppingAgent — missões, alertas, histórico de preço e privacidade.
+---
+
 # Recursos
 
 <div class="grid cards" markdown>

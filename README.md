@@ -1,31 +1,8 @@
-# AIShoppingAgent — site público
+# AIShoppingAgent
 
-Este repositório contém **exclusivamente** o site institucional/público do
-AIShoppingAgent, publicado via GitHub Pages a partir de `docs/` (MkDocs +
-Material for MkDocs).
+🌐 Site oficial: **https://jhonnatancesar.github.io/**
 
-## O que este repositório é
-
-- O código-fonte do site (páginas em Markdown, tema, workflow de publicação).
-
-## O que este repositório **não** é
-
-- **Não é o código-fonte do AIShoppingAgent.** O backend, o bot e toda a
-  lógica da aplicação vivem em outro lugar.
-- **Não contém banco de dados, infraestrutura, containers, migrations ou
-  qualquer procedimento de operação.**
-- O projeto principal do AIShoppingAgent é **privado**. Este repositório
-  existe apenas para publicar o site público — ele não depende do projeto
-  principal para funcionar, e o projeto principal não depende dele.
-
-## Desenvolvimento local
-
-```bash
-pip install "mkdocs-material>=9" "mkdocs>=1.6"
-mkdocs serve
-```
-
-## Publicação
-
-Todo push em `main` publica automaticamente em GitHub Pages via
-`.github/workflows/pages.yml`.
+Este repositório contém apenas os arquivos usados para publicar o site
+institucional do AIShoppingAgent (MkDocs + Material for MkDocs, via GitHub
+Pages). Não é o código-fonte do AIShoppingAgent — a aplicação vive num
+repositório privado à parte.

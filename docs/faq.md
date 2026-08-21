@@ -1,3 +1,7 @@
+---
+description: Respostas às perguntas mais comuns sobre o AIShoppingAgent — preço, privacidade, lojas e uso.
+---
+
 # Perguntas frequentes
 
 ## O AIShoppingAgent compra automaticamente por mim?

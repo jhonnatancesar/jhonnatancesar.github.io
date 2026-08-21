@@ -1,3 +1,7 @@
+---
+description: Quais lojas o AIShoppingAgent já monitora hoje — Pichau, Terabyte, Amazon e KaBuM! — e quais estão previstas para o futuro.
+---
+
 # Lojas suportadas
 
 Cada missão pode acompanhar uma ou várias das lojas abaixo, escolhidas por você no momento da criação.

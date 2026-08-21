@@ -1,3 +1,7 @@
+---
+description: O acesso público ao AIShoppingAgent ainda está em preparação.
+---
+
 # Começar a usar
 
 ## Em breve

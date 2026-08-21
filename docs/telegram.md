@@ -1,3 +1,7 @@
+---
+description: Como funciona a interação com o AIShoppingAgent pelo Telegram e quais comandos existem.
+---
+
 # Alertas pelo Telegram
 
 O Telegram é o único canal de interação com o AIShoppingAgent hoje. Tudo acontece num chat privado, direto entre você e o bot.

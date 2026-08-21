@@ -1,3 +1,7 @@
+---
+description: Versão atual e histórico de versões do AIShoppingAgent.
+---
+
 # Releases
 
 ## Versão atual

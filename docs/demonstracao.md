@@ -1,3 +1,7 @@
+---
+description: Um exemplo ilustrativo de conversa com o AIShoppingAgent, da criação de uma missão ao alerta recebido.
+---
+
 # Demonstração
 
 O exemplo abaixo é ilustrativo — mostra o tipo de conversa que acontece com o AIShoppingAgent, não uma captura real de um usuário.

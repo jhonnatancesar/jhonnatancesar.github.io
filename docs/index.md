@@ -1,5 +1,4 @@
 ---
-title: AIShoppingAgent
 description: O agente que monitora preços por você e avisa na hora certa de comprar.
 ---
 

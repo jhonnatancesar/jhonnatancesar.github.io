@@ -1,3 +1,7 @@
+---
+description: O que é o AIShoppingAgent, qual problema ele resolve e para quem ele foi pensado.
+---
+
 # Sobre o AIShoppingAgent
 
 O AIShoppingAgent nasceu de um problema simples: acompanhar o preço de um produto que você quer comprar dá trabalho. As boas promoções costumam durar pouco, e ninguém tem tempo de revisitar várias lojas todos os dias só para conferir se o preço caiu.

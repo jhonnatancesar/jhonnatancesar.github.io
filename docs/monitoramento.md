@@ -1,3 +1,7 @@
+---
+description: Como o AIShoppingAgent acompanha o histórico de preço e decide quando um alerta deve ser enviado.
+---
+
 # Monitoramento de preços
 
 ## Como o preço é acompanhado

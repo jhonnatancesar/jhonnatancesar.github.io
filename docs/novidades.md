@@ -1,3 +1,7 @@
+---
+description: Os destaques mais recentes do AIShoppingAgent.
+---
+
 # Novidades
 
 Os destaques mais recentes do AIShoppingAgent. Para o histórico completo de versões, veja [Releases](releases.md).

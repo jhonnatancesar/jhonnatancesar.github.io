@@ -1,3 +1,7 @@
+---
+description: O passo a passo de como o AIShoppingAgent monitora preços e avisa você pelo Telegram.
+---
+
 # Como funciona
 
 O AIShoppingAgent funciona inteiramente por conversa, num chat privado do Telegram. Não existe painel separado nem instalação — você fala com o bot como falaria com uma pessoa.

@@ -1,3 +1,7 @@
+---
+description: O que é uma missão de acompanhamento de preço no AIShoppingAgent e como gerenciá-la.
+---
+
 # Missões
 
 Uma **missão** é a forma como o AIShoppingAgent representa "quero acompanhar o preço disto". Ela existe desde o momento em que você descreve o produto até você decidir pausá-la ou cancelá-la.
