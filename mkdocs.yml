@@ -9,6 +9,8 @@ theme:
   name: material
   custom_dir: overrides
   language: pt-BR
+  logo: assets/logo.png
+  favicon: assets/favicon.png
   font:
     text: Inter
   palette:
