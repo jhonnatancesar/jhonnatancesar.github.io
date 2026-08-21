@@ -21,11 +21,13 @@ O preço à vista é sempre a referência principal. Quando a própria loja info
 Digite um preço que já foi visto antes e um preço de agora, e veja como o AIShoppingAgent decidiria se isso é ou não motivo para um alerta:
 
 <div class="price-calc" markdown>
-<label>Preço que você já viu antes
-<input type="number" id="calc-before" inputmode="decimal" placeholder="Ex.: 799,90"></label>
-<label>Preço de agora
-<input type="number" id="calc-now" inputmode="decimal" placeholder="Ex.: 689,90"></label>
-<div class="calc-result"></div>
+<div class="price-calc__row" markdown>
+<label>Preço anterior
+<input type="number" id="calc-before" inputmode="decimal" placeholder="R$ 799,90"></label>
+<label>Preço encontrado agora
+<input type="number" id="calc-now" inputmode="decimal" placeholder="R$ 689,90"></label>
+</div>
+<div class="calc-result" aria-live="polite"></div>
 </div>
 
 Isso é só para ilustrar a lógica — o AIShoppingAgent faz essa mesma comparação sozinho, com os preços reais que ele encontra nas lojas.

@@ -5,7 +5,7 @@
 
   /* ---------- Revelar ao rolar a página ---------- */
   function initReveal() {
-    var items = document.querySelectorAll(".grid.cards li, .flow-step, .timeline-item, .reveal");
+    var items = document.querySelectorAll(".grid.cards li, .ai-journey__step, .ai-step, .ai-mission-card, .timeline-item, .reveal");
     if (!items.length) return;
 
     if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -30,7 +30,9 @@
     items.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---------- Chat de demonstração, passo a passo ---------- */
+  /* ---------- Chat de demonstração, passo a passo ----------
+     Só avança por um controle explícito (botão). Clicar dentro do
+     balão de conversa NÃO avança mais nada, de propósito. */
   function initChatDemo() {
     var demo = document.querySelector(".chat-demo");
     if (!demo) return;
@@ -40,24 +42,33 @@
 
     demo.classList.add("js-interactive");
 
+    var footer = demo.closest(".ai-chat-frame")
+      ? demo.closest(".ai-chat-frame").querySelector(".ai-chat-frame__footer")
+      : null;
+
     var controls = document.createElement("div");
     controls.className = "chat-demo-controls";
     var button = document.createElement("button");
     button.type = "button";
     button.className = "chat-demo-button";
-    demo.parentNode.insertBefore(controls, demo.nextSibling);
     controls.appendChild(button);
+
+    if (footer) {
+      footer.appendChild(controls);
+    } else {
+      demo.parentNode.insertBefore(controls, demo.nextSibling);
+    }
 
     var shownCount = 0;
     var typingEl = null;
 
     function updateButton() {
       if (shownCount === 0) {
-        button.textContent = "▶ Começar a conversa";
+        button.textContent = "▶ Começar conversa";
       } else if (shownCount < messages.length) {
-        button.textContent = "Continuar conversa ↓";
+        button.textContent = "Continuar ↓";
       } else {
-        button.textContent = "🔁 Ver de novo";
+        button.textContent = "🔁 Ver novamente";
       }
     }
 
@@ -103,10 +114,6 @@
     }
 
     button.addEventListener("click", showNext);
-    demo.addEventListener("click", function () {
-      if (shownCount < messages.length) showNext();
-    });
-
     updateButton();
   }
 
@@ -125,7 +132,7 @@
       var n = parseFloat((now.value || "").replace(",", "."));
 
       if (isNaN(b) || isNaN(n) || b <= 0 || n <= 0) {
-        result.textContent = "";
+        result.innerHTML = "";
         result.className = "calc-result";
         return;
       }
@@ -133,15 +140,16 @@
       if (n < b) {
         var diff = b - n;
         var pct = (diff / b) * 100;
-        result.textContent =
-          "Caiu " + pct.toFixed(1).replace(".", ",") + "% — R$ " + diff.toFixed(2).replace(".", ",") +
-          " a menos do que da última vez que foi visto. É esse tipo de queda que gera um alerta.";
+        result.innerHTML =
+          '<span class="calc-result__figure">↓ ' + pct.toFixed(1).replace(".", ",") + "%</span>" +
+          "R$ " + diff.toFixed(2).replace(".", ",") + " mais barato do que da última vez visto.<br>" +
+          "🔔 Esse é o tipo de mudança que pode gerar um alerta.";
         result.className = "calc-result calc-result--good";
       } else if (n === b) {
-        result.textContent = "O preço continua igual ao que já foi visto — nenhum alerta seria enviado aqui.";
+        result.innerHTML = "O preço continua igual ao que já foi visto — nenhum alerta seria enviado aqui.";
         result.className = "calc-result calc-result--neutral";
       } else {
-        result.textContent = "Esse preço está maior do que o já visto antes — também não geraria alerta.";
+        result.innerHTML = "Esse preço está maior do que o já visto antes — também não geraria alerta.";
         result.className = "calc-result calc-result--neutral";
       }
     }
@@ -150,30 +158,53 @@
     now.addEventListener("input", update);
   }
 
-  /* ---------- Cards de loja: clique para saber mais ---------- */
-  function initStoreCards() {
-    var cards = document.querySelectorAll(".store-card");
-    if (!cards.length) return;
+  /* ---------- Telegram: segmented control entre cenários ---------- */
+  function initScenarioTabs() {
+    var wrap = document.querySelector(".ai-tabs");
+    if (!wrap) return;
 
-    cards.forEach(function (card) {
-      card.setAttribute("tabindex", "0");
-      card.setAttribute("role", "button");
-      var toggle = function () { card.classList.toggle("is-expanded"); };
-      card.addEventListener("click", toggle);
-      card.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggle();
-        }
+    var panels = Array.prototype.slice.call(wrap.querySelectorAll(".ai-tabs__panel"));
+    if (!panels.length) return;
+
+    wrap.classList.add("js-ready");
+
+    var list = document.createElement("ul");
+    list.className = "ai-tabs__list";
+    list.setAttribute("role", "tablist");
+
+    panels.forEach(function (panel, i) {
+      var li = document.createElement("li");
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "ai-tabs__btn";
+      btn.textContent = panel.getAttribute("data-label") || "Cenário " + (i + 1);
+      btn.setAttribute("role", "tab");
+      btn.setAttribute("aria-selected", i === 0 ? "true" : "false");
+      btn.setAttribute("aria-controls", panel.id);
+      panel.setAttribute("role", "tabpanel");
+      panel.classList.toggle("is-active", i === 0);
+
+      btn.addEventListener("click", function () {
+        panels.forEach(function (p) { p.classList.remove("is-active"); });
+        list.querySelectorAll(".ai-tabs__btn").forEach(function (b) {
+          b.setAttribute("aria-selected", "false");
+        });
+        panel.classList.add("is-active");
+        btn.setAttribute("aria-selected", "true");
       });
+
+      li.appendChild(btn);
+      list.appendChild(li);
     });
+
+    wrap.insertBefore(list, panels[0]);
   }
 
   function init() {
     initReveal();
     initChatDemo();
     initPriceCalc();
-    initStoreCards();
+    initScenarioTabs();
   }
 
   /* O tema usa navegação instantânea (troca de página via JS, sem reload).

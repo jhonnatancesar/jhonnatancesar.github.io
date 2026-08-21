@@ -9,27 +9,31 @@ theme:
   name: material
   custom_dir: overrides
   language: pt-BR
+  font:
+    text: Inter
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Alternar para modo escuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Alternar para modo claro
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.instant
     - navigation.tracking
     - content.code.copy
+    - content.tooltips
     - search.suggest
     - search.highlight
   icon:
@@ -59,19 +63,21 @@ markdown_extensions:
       permalink: true
 
 nav:
-  - Home: index.md
-  - Sobre: sobre.md
-  - Como funciona: como-funciona.md
+  - Início: index.md
+  - Como funciona:
+      - como-funciona.md
+      - monitoramento.md
+      - missoes.md
+      - telegram.md
+      - lojas.md
+      - sobre.md
   - Recursos: recursos.md
-  - Lojas suportadas: lojas.md
-  - Monitoramento de preços: monitoramento.md
-  - Alertas pelo Telegram: telegram.md
-  - Missões: missoes.md
   - Demonstração: demonstracao.md
   - Novidades: novidades.md
-  - Releases: releases.md
-  - Começar a usar: comecar.md
-  - FAQ: faq.md
+  - Ajuda:
+      - faq.md
+      - releases.md
+      - comecar.md
 
 copyright: >
   AIShoppingAgent — projeto pessoal independente. Não afiliado a nenhuma das

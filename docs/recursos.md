@@ -36,7 +36,7 @@ Não é só uma lista de funções. Cada coisa que o AIShoppingAgent faz existe 
 
     Quando a própria loja informa, o alerta também mostra as opções de parcelamento — nunca um valor inventado.
 
--   :material-telegram:{ .lg .middle } **O aviso chega onde você já conversa**
+-   :fontawesome-brands-telegram:{ .lg .middle } **O aviso chega onde você já conversa**
 
     Tudo pelo Telegram: criar, pausar, editar, cancelar e consultar suas missões, sem sair do chat.
 

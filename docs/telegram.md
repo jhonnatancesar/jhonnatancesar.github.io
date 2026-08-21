@@ -8,46 +8,66 @@ Não existe um sistema novo para aprender. Toda a experiência com o AIShoppingA
 
 ## Por que pelo Telegram
 
-- Você provavelmente já tem o app — não precisa criar mais uma conta em mais um lugar.
-- Os avisos chegam como notificação normal, no celular ou no computador, no exato momento em que o preço muda.
-- Basta escrever com suas palavras — nada de formulário para preencher.
+<div class="grid cards" markdown>
 
-## Alguns exemplos do dia a dia
+-   :material-account-check-outline:{ .lg .middle } **Você já tem a conta**
 
-**Pedindo para acompanhar um produto:**
+    Não precisa criar mais uma conta em mais um lugar.
+
+-   :material-bell-badge-outline:{ .lg .middle } **Notificação de verdade**
+
+    Os avisos chegam no celular ou no computador, na hora em que o preço muda.
+
+-   :material-message-text-outline:{ .lg .middle } **Sem formulário**
+
+    Basta escrever com suas palavras.
+
+</div>
+
+## Escolha um momento para ver como é
+
+<div class="ai-tabs" markdown>
+
+<div class="ai-tabs__panel" id="panel-criar" data-label="Criar acompanhamento" markdown>
 
 <div class="chat" markdown>
 <div class="chat-msg user"><span class="who">Você</span>Quero acompanhar um SSD NVMe de 2 TB. Se aparecer abaixo de R$ 700, me avisa.</div>
 <div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Combinado! Vou acompanhar esse SSD com alvo de R$ 700. Em quais lojas você quer que eu procure?</div>
 </div>
 
-**Recebendo um alerta:**
+</div>
+
+<div class="ai-tabs__panel" id="panel-alerta" data-label="Receber alerta" markdown>
 
 <div class="chat" markdown>
 <div class="chat-msg bot"><span class="who">AIShoppingAgent</span>🔔 Encontrei o SSD NVMe 2 TB por R$ 689,90, abaixo do valor que você pediu. Quer ver a oferta?</div>
 </div>
 
-**Consultando o que está acompanhando:**
+O alerta traz o preço encontrado (à vista, e o parcelamento quando a loja informa), a loja de origem e um link direto para a oferta.
+
+</div>
+
+<div class="ai-tabs__panel" id="panel-consultar" data-label="Consultar" markdown>
 
 <div class="chat" markdown>
 <div class="chat-msg user"><span class="who">Você</span>`/listar_missoes`</div>
 <div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Você tem 1 acompanhamento ativo: SSD NVMe 2 TB, alvo R$ 700.</div>
 </div>
 
-**Cancelando um acompanhamento:**
+</div>
+
+<div class="ai-tabs__panel" id="panel-cancelar" data-label="Pausar / cancelar" markdown>
 
 <div class="chat" markdown>
 <div class="chat-msg user"><span class="who">Você</span>`/cancelar_missao`</div>
 <div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Encontrei 1 acompanhamento cancelável: SSD NVMe 2 TB. Confirma o cancelamento?</div>
 </div>
 
-## O que o alerta mostra
+Pausar funciona pelo mesmo chat, do mesmo jeito simples — o acompanhamento para sem perder nada do que já foi visto, e pode ser retomado quando você quiser.
 
-Quando um produto que você está acompanhando encontra uma queda de preço ou chega no valor-alvo, a mensagem traz:
+</div>
 
-- o preço encontrado (à vista, e o parcelamento quando a loja informa);
-- em qual loja está;
-- um link direto para a oferta.
+</div>
 
 ## Os comandos, se você preferir usá-los
 

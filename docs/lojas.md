@@ -8,25 +8,21 @@ Quando você cria uma missão (o nome que damos para um pedido de acompanhamento
 
 ## Disponíveis agora
 
-Clique em uma loja para saber um pouco mais sobre ela.
+Abra uma loja para ver detalhes.
 
 <ul class="store-grid">
-<li class="store-card">🏬 <strong>Pichau</strong>
+<li><details class="store-card"><summary>🏬 <strong>Pichau</strong> <span class="store-chevron">⌄</span></summary>
 <div class="store-more">Loja de hardware e periféricos bem conhecida por quem monta o próprio computador.</div>
-<span class="store-hint">toque para saber mais</span>
-</li>
-<li class="store-card">🏬 <strong>Terabyte</strong>
+</details></li>
+<li><details class="store-card"><summary>🏬 <strong>Terabyte</strong> <span class="store-chevron">⌄</span></summary>
 <div class="store-more">Outra grande referência em hardware e componentes de PC no Brasil.</div>
-<span class="store-hint">toque para saber mais</span>
-</li>
-<li class="store-card">🛒 <strong>Amazon</strong>
+</details></li>
+<li><details class="store-card"><summary>🛒 <strong>Amazon</strong> <span class="store-chevron">⌄</span></summary>
 <div class="store-more">Inclui também ofertas de outros vendedores dentro da Amazon, não só da própria loja.</div>
-<span class="store-hint">toque para saber mais</span>
-</li>
-<li class="store-card">🏬 <strong>KaBuM!</strong>
+</details></li>
+<li><details class="store-card"><summary>🏬 <strong>KaBuM!</strong> <span class="store-chevron">⌄</span></summary>
 <div class="store-more">Uma das maiores lojas de tecnologia e games do país.</div>
-<span class="store-hint">toque para saber mais</span>
-</li>
+</details></li>
 </ul>
 
 !!! note "Uma loja pode ficar temporariamente indisponível"

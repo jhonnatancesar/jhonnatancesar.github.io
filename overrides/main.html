@@ -17,3 +17,83 @@
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
 {% endblock %}
+
+{% block hero %}
+  {% if page and page.is_homepage %}
+    <div class="ai-hero">
+      <div class="ai-hero__inner">
+        <div class="ai-hero__copy">
+          <p class="ai-hero__kicker">AIShoppingAgent</p>
+          <h1 class="ai-hero__title">Procurando alguma coisa para comprar?</h1>
+          <p class="ai-hero__subtitle">
+            Você conta o que quer, do seu jeito. O AIShoppingAgent acompanha
+            os preços nas lojas para você e te avisa pelo Telegram assim que
+            aparecer algo que realmente vale a pena.
+          </p>
+          <div class="ai-hero__actions">
+            <a href="{{ 'como-funciona/' | url }}" class="ai-btn ai-btn--primary">Ver como funciona</a>
+            <a href="{{ 'comecar/' | url }}" class="ai-btn ai-btn--ghost">Uso público em breve</a>
+          </div>
+        </div>
+        <div class="ai-hero__visual" aria-hidden="true">
+          <div class="ai-chat-frame ai-chat-frame--preview">
+            <div class="ai-chat-frame__bar">
+              <span class="ai-chat-frame__dot"></span>
+              <span class="ai-chat-frame__title">AIShoppingAgent</span>
+            </div>
+            <div class="chat ai-chat-frame__body">
+              <div class="chat-msg user shown"><span class="who">Você</span>Quero um SSD de 2 TB abaixo de R$ 700.</div>
+              <div class="chat-msg bot shown"><span class="who">AIShoppingAgent</span>Beleza, deixa comigo! Vou acompanhar o preço e te aviso assim que valer a pena.</div>
+              <div class="chat-msg bot shown"><span class="who">AIShoppingAgent</span>🔔 Encontrei por R$ 689,90 — abaixo do que você pediu.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block container %}
+  <div class="md-content{{ ' ai-home-content' if page and page.is_homepage else '' }}" data-md-component="content">
+    {% if "navigation.path" in features %}
+      {% include "partials/path.html" %}
+    {% endif %}
+    <article class="md-content__inner md-typeset">
+      {% block content %}
+        {% include "partials/content.html" %}
+      {% endblock %}
+    </article>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  <footer class="md-footer">
+    <div class="ai-footer">
+      <div class="ai-footer__inner">
+        <div class="ai-footer__brand">
+          <p class="ai-footer__name">AIShoppingAgent</p>
+          <p class="ai-footer__tagline">Uma forma simples de acompanhar preços.</p>
+        </div>
+        <nav class="ai-footer__col" aria-label="Produto">
+          <p class="ai-footer__heading">Produto</p>
+          <a href="{{ 'como-funciona/' | url }}">Como funciona</a>
+          <a href="{{ 'recursos/' | url }}">Recursos</a>
+          <a href="{{ 'demonstracao/' | url }}">Demonstração</a>
+        </nav>
+        <nav class="ai-footer__col" aria-label="Informações">
+          <p class="ai-footer__heading">Informações</p>
+          <a href="{{ 'novidades/' | url }}">Novidades</a>
+          <a href="{{ 'releases/' | url }}">Releases</a>
+          <a href="{{ 'faq/' | url }}">FAQ</a>
+        </nav>
+        <div class="ai-footer__col">
+          <p class="ai-footer__heading">Uso público</p>
+          <a href="{{ 'comecar/' | url }}">Em breve</a>
+        </div>
+      </div>
+      <div class="ai-footer__bottom">
+        <p>{{ config.copyright }}</p>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

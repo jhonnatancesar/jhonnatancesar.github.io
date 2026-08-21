@@ -4,9 +4,15 @@ description: Uma demonstração interativa de conversa com o AIShoppingAgent, da
 
 # Veja como seria, na prática
 
-A conversa abaixo é interativa: clique no botão para ir avançando, mensagem por mensagem, como se estivesse acompanhando de verdade. É um exemplo ilustrativo — não uma captura real de um usuário —, mas mostra exatamente o tipo de interação que acontece com o AIShoppingAgent.
+A conversa abaixo é interativa: use o botão para ir avançando, mensagem por mensagem, como se estivesse acompanhando de verdade. É um exemplo ilustrativo — não uma captura real de um usuário —, mas mostra exatamente o tipo de interação que acontece com o AIShoppingAgent.
 
-<div class="chat chat-demo" markdown>
+<div class="ai-chat-frame" markdown>
+<div class="ai-chat-frame__bar">
+<span aria-hidden="true">←</span>
+<span class="ai-chat-frame__title">AIShoppingAgent</span>
+<span aria-hidden="true">⋮</span>
+</div>
+<div class="chat chat-demo ai-chat-frame__body" markdown>
 <div class="chat-msg user"><span class="who">Você</span>`/criar_missao`</div>
 <div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Me conta o que você quer acompanhar. Pode descrever com suas palavras.</div>
 <div class="chat-msg user"><span class="who">Você</span>Um SSD NVMe de 2TB, de preferência abaixo de R$ 700.</div>
@@ -17,9 +23,11 @@ A conversa abaixo é interativa: clique no botão para ir avançando, mensagem p
 <div class="chat-msg user"><span class="who">Você</span>`/listar_missoes`</div>
 <div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Você tem 1 missão ativa:<br><br>1 · SSD NVMe 2TB — alvo R$ 700,00 — Pichau, Terabyte, Amazon, KaBuM!</div>
 </div>
+<div class="ai-chat-frame__footer"></div>
+</div>
 
-Se o botão acima não aparecer (por exemplo, com JavaScript desligado), a conversa completa continua visível normalmente, sem nenhum passo escondido.
+Se o botão não aparecer (por exemplo, com JavaScript desligado), a conversa completa continua visível normalmente, sem nenhum passo escondido.
 
 A partir daí, editar as lojas ou o preço-alvo, pausar ou cancelar essa missão é só mais uma mensagem no mesmo chat — sem precisar recriar nada do zero.
 
-[Ver como funciona por completo](como-funciona.md){ .md-button }
+[Ver como funciona por completo](como-funciona.md){ .ai-btn .ai-btn--ghost }

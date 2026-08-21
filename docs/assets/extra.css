@@ -1,13 +1,507 @@
-/* Elementos visuais leves para tornar o conteúdo mais fácil de acompanhar.
-   Usam as variáveis de cor do próprio tema Material, então se adaptam
-   automaticamente ao modo claro/escuro. */
+/* ==========================================================================
+   AIShoppingAgent — design system do site público
+   Construído sobre as variáveis do Material (light/dark automáticos),
+   com uma camada própria de identidade visual por cima.
+   ========================================================================== */
 
-/* --- Conversa (balões de chat) --- */
+/* --- 1. Tokens de marca -------------------------------------------------- */
+:root {
+  --ai-primary: #4f46e5;
+  --ai-primary-dark: #3730a3;
+  --ai-accent: #f59e0b;
+  --ai-success: #15803d;
+  --ai-success-bg: #ecfdf3;
+  --ai-success-border: #bbf7d0;
+  --ai-warn: #b45309;
+  --ai-warn-bg: #fffbeb;
+  --ai-danger: #b91c1c;
+  --ai-danger-bg: #fef2f2;
+  --ai-neutral-bg: #f3f4f6;
+
+  --ai-radius-sm: 8px;
+  --ai-radius-md: 14px;
+  --ai-radius-lg: 22px;
+  --ai-radius-pill: 999px;
+
+  --ai-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.07), 0 1px 1px rgba(15, 23, 42, 0.04);
+  --ai-shadow-md: 0 10px 28px rgba(15, 23, 42, 0.12);
+
+  --ai-border: var(--md-default-fg-color--lighter);
+  --ai-surface: var(--md-default-bg-color);
+  --ai-surface-alt: var(--md-default-fg-color--lightest);
+}
+
+[data-md-color-scheme="slate"] {
+  --ai-primary: #a5b4fc;
+  --ai-primary-dark: #818cf8;
+  --ai-accent: #fbbf24;
+  --ai-success: #4ade80;
+  --ai-success-bg: rgba(74, 222, 128, 0.12);
+  --ai-success-border: rgba(74, 222, 128, 0.35);
+  --ai-warn: #fbbf24;
+  --ai-warn-bg: rgba(251, 191, 36, 0.1);
+  --ai-danger: #f87171;
+  --ai-danger-bg: rgba(248, 113, 113, 0.1);
+  --ai-neutral-bg: rgba(255, 255, 255, 0.06);
+  --ai-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --ai-shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Liga a paleta "custom" do Material às cores da marca (light) */
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color: #4f46e5;
+  --md-primary-fg-color--light: #6366f1;
+  --md-primary-fg-color--dark: #3730a3;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffff;
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color: #b45309;
+  --md-accent-fg-color--transparent: rgba(245, 158, 11, 0.1);
+  --md-accent-bg-color: #ffffff;
+}
+
+/* Dark: mesma marca, ajustada para contraste sobre fundo escuro */
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+  --md-primary-fg-color: #a5b4fc;
+  --md-primary-fg-color--light: #c7d2fe;
+  --md-primary-fg-color--dark: #818cf8;
+  --md-primary-bg-color: #1e1b4b;
+  --md-primary-bg-color--light: #1e1b4b;
+}
+
+[data-md-color-scheme="slate"][data-md-color-accent="custom"] {
+  --md-accent-fg-color: #fbbf24;
+  --md-accent-fg-color--transparent: rgba(251, 191, 36, 0.15);
+  --md-accent-bg-color: #1e1b4b;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- 2. Tipografia -------------------------------------------------------- */
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  margin-top: 2.2em;
+}
+
+.md-typeset h3 {
+  font-weight: 700;
+}
+
+/* --- 3. Header: menos poluição visual ------------------------------------ */
+.md-header {
+  box-shadow: none;
+  border-bottom: 1px solid var(--ai-border);
+}
+
+.md-header--shadow {
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+}
+
+.md-search__input {
+  border-radius: var(--ai-radius-pill);
+}
+
+.md-tabs {
+  border-bottom: 1px solid var(--ai-border);
+}
+
+/* --- 4. Botões (marca própria + md-button alinhado) ----------------------- */
+.ai-btn,
+.ai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  padding: 0.7rem 1.35rem;
+  border-radius: var(--ai-radius-pill);
+  border: 1.5px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  text-decoration: none !important;
+}
+
+.ai-btn--primary {
+  background: var(--ai-primary);
+  color: #ffffff !important;
+  box-shadow: var(--ai-shadow-sm);
+}
+
+.ai-btn--primary:hover {
+  background: var(--ai-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--ai-shadow-md);
+}
+
+.ai-btn--ghost {
+  background: transparent;
+  border-color: var(--ai-border);
+  color: var(--md-default-fg-color) !important;
+}
+
+.ai-btn--ghost:hover {
+  border-color: var(--ai-primary);
+  color: var(--ai-primary) !important;
+  transform: translateY(-1px);
+}
+
+.ai-btn:focus-visible {
+  outline: 2px solid var(--ai-primary);
+  outline-offset: 2px;
+}
+
+/* --- 5. Badges de estado --------------------------------------------------- */
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--ai-radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ai-badge--active {
+  background: var(--ai-success-bg);
+  color: var(--ai-success);
+  border: 1px solid var(--ai-success-border);
+}
+
+.ai-badge--paused {
+  background: var(--ai-warn-bg);
+  color: var(--ai-warn);
+  border: 1px solid rgba(180, 83, 9, 0.25);
+}
+
+.ai-badge--cancelled {
+  background: var(--ai-danger-bg);
+  color: var(--ai-danger);
+  border: 1px solid rgba(185, 28, 28, 0.2);
+}
+
+.ai-badge--neutral {
+  background: var(--ai-neutral-bg);
+  color: var(--md-default-fg-color--light);
+  border: 1px solid var(--ai-border);
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 0.15rem 0.65rem;
+  border-radius: var(--ai-radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--ai-primary);
+  color: #fff;
+}
+
+/* --- 6. Cards: hover discreto e cantos consistentes ------------------------ */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > ol > li {
+  border-radius: var(--ai-radius-md);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > ol > li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ai-shadow-md);
+  border-color: var(--ai-primary);
+}
+
+/* ==========================================================================
+   Hero (só na Home, via overrides/main.html)
+   ========================================================================== */
+.ai-hero {
+  background: linear-gradient(180deg, var(--ai-surface-alt) 0%, var(--ai-surface) 100%);
+  border-bottom: 1px solid var(--ai-border);
+}
+
+.ai-hero__inner {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.2rem 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.ai-hero__kicker {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ai-primary);
+  margin: 0 0 0.6rem;
+}
+
+.ai-hero__title {
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin: 0 0 0.9rem;
+  color: var(--md-default-fg-color);
+}
+
+.ai-hero__subtitle {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--light);
+  max-width: 34rem;
+  margin: 0 0 1.6rem;
+}
+
+.ai-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ai-hero__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.ai-chat-frame--preview {
+  width: 100%;
+  max-width: 21rem;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Home: conteúdo abaixo do hero um pouco mais largo que o padrão de leitura
+   ========================================================================== */
+.ai-home-content .md-content__inner {
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+.ai-home-content .md-content__inner::before {
+  height: 0;
+}
+
+/* ==========================================================================
+   Fluxo "você pede → recebe o alerta" — horizontal no desktop
+   ========================================================================== */
+.ai-journey {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  align-items: stretch;
+  margin: 1.75rem 0;
+}
+
+.ai-journey__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  padding: 1rem 0.6rem;
+}
+
+.ai-journey__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: var(--ai-surface-alt);
+  border: 1.5px solid var(--ai-border);
+}
+
+.ai-journey__title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.ai-journey__text {
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ai-journey__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ai-primary);
+  font-size: 1.3rem;
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   "Como funciona": blocos numerados
+   ========================================================================== */
+.ai-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.ai-step {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius-lg);
+  background: var(--ai-surface-alt);
+}
+
+.ai-step__index {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ai-primary);
+  line-height: 1;
+}
+
+.ai-step__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+}
+
+.ai-step__text {
+  margin: 0 0 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.ai-step__mock {
+  margin-top: 0.5rem;
+}
+
+/* mini mock-ups usados dentro dos steps */
+.ai-mock-msg {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--ai-radius-md);
+  background: var(--ai-surface);
+  border: 1px solid var(--ai-border);
+  font-size: 0.85rem;
+}
+
+.ai-mock-history {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 2.5rem;
+}
+
+.ai-mock-history span {
+  width: 0.9rem;
+  border-radius: 3px 3px 0 0;
+  background: var(--ai-border);
+}
+
+.ai-mock-history span.is-low {
+  background: var(--ai-success);
+}
+
+.ai-mock-offer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--ai-radius-md);
+  background: var(--ai-success-bg);
+  border: 1px solid var(--ai-success-border);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ai-success);
+}
+
+.ai-mock-notification {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--ai-radius-md);
+  background: var(--ai-surface);
+  border: 1px solid var(--ai-border);
+  font-size: 0.85rem;
+  box-shadow: var(--ai-shadow-sm);
+}
+
+/* ==========================================================================
+   Chat: moldura de app + balões
+   ========================================================================== */
+.ai-chat-frame {
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--ai-shadow-md);
+  background: var(--ai-surface);
+  margin: 1.5rem 0;
+}
+
+.ai-chat-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1rem;
+  background: var(--ai-primary);
+  color: #fff;
+}
+
+.ai-chat-frame__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.ai-chat-frame__title {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.ai-chat-frame__body {
+  padding: 1.1rem 1rem;
+  min-height: 6rem;
+  margin: 0 !important;
+}
+
+.ai-chat-frame__footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--ai-border);
+  background: var(--ai-surface-alt);
+  display: flex;
+  justify-content: center;
+}
+
 .chat {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  margin: 1.5rem 0;
 }
 
 .chat-msg {
@@ -33,23 +527,23 @@
 
 .chat-msg.user {
   align-self: flex-end;
-  background: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
+  background: var(--ai-primary);
+  color: #fff;
   border-bottom-right-radius: 0.3rem;
 }
 
 .chat-msg.user .who {
-  color: var(--md-primary-bg-color);
+  color: #fff;
   opacity: 0.8;
 }
 
 .chat-msg.bot {
   align-self: flex-start;
-  background: var(--md-default-fg-color--lightest);
+  background: var(--ai-surface-alt);
+  border: 1px solid var(--ai-border);
   border-bottom-left-radius: 0.3rem;
 }
 
-/* --- Chat interativo (demonstração) --- */
 .chat-demo.js-interactive .chat-msg {
   display: none;
 }
@@ -71,7 +565,7 @@
 }
 
 .chat-demo-controls {
-  margin: 0.75rem 0 1.75rem;
+  margin: 0;
 }
 
 .chat-demo-button {
@@ -81,16 +575,16 @@
   letter-spacing: 0.02em;
   padding: 0.55rem 1.1rem;
   border: none;
-  border-radius: 999px;
-  background: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
+  border-radius: var(--ai-radius-pill);
+  background: var(--ai-primary);
+  color: #fff;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 }
 
 .chat-demo-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--ai-shadow-md);
 }
 
 .chat-demo-button:disabled {
@@ -100,12 +594,18 @@
   box-shadow: none;
 }
 
+.chat-demo-button:focus-visible {
+  outline: 2px solid var(--ai-primary);
+  outline-offset: 2px;
+}
+
 .chat-typing {
   align-self: flex-start;
   display: flex !important;
   align-items: center;
   gap: 0.3rem;
-  background: var(--md-default-fg-color--lightest);
+  background: var(--ai-surface-alt);
+  border: 1px solid var(--ai-border);
   border-bottom-left-radius: 0.3rem;
   padding: 0.75rem 1rem;
 }
@@ -138,42 +638,369 @@
   }
 }
 
-/* --- Fluxo em etapas (setas verticais) --- */
-.flow {
+/* ==========================================================================
+   Segmented control (página Telegram)
+   ========================================================================== */
+.ai-tabs {
+  margin: 1.5rem 0;
+}
+
+.ai-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.3rem;
+  background: var(--ai-surface-alt);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius-pill);
+  margin: 0 0 1.1rem;
+  list-style: none;
+}
+
+.ai-tabs__btn {
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--ai-radius-pill);
+  background: transparent;
+  color: var(--md-default-fg-color--light);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ai-tabs__btn:hover {
+  color: var(--ai-primary);
+}
+
+.ai-tabs__btn[aria-selected="true"] {
+  background: var(--ai-primary);
+  color: #fff;
+}
+
+.ai-tabs__btn:focus-visible {
+  outline: 2px solid var(--ai-primary);
+  outline-offset: 2px;
+}
+
+.ai-tabs__panel {
+  display: none;
+}
+
+.ai-tabs__panel.is-active {
+  display: block;
+  animation: chat-pop 0.2s ease both;
+}
+
+/* Sem JS: mostra todos os painéis, com título, para nada ficar invisível */
+.ai-tabs:not(.js-ready) .ai-tabs__list {
+  display: none;
+}
+
+.ai-tabs:not(.js-ready) .ai-tabs__panel {
+  display: block !important;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   Missões: cards estilo aplicativo
+   ========================================================================== */
+.ai-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.ai-mission-card {
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius-lg);
+  padding: 1.1rem 1.2rem;
+  background: var(--ai-surface);
+  box-shadow: var(--ai-shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ai-mission-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ai-shadow-md);
+}
+
+.ai-mission-card__title {
+  font-weight: 800;
+  font-size: 1rem;
+  margin: 0 0 0.55rem;
+}
+
+.ai-mission-card__meta {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 1rem;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  margin: 1.75rem 0;
-  max-width: 32rem;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
 }
 
-.flow-step {
-  padding: 0.85rem 1.1rem;
-  border-radius: 0.6rem;
-  background: var(--md-default-fg-color--lightest);
-  border-left: 4px solid var(--md-primary-fg-color);
+.ai-mission-card__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ai-mission-card__actions button {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--ai-radius-pill);
+  border: 1px solid var(--ai-border);
+  background: transparent;
+  color: var(--md-default-fg-color);
+  cursor: default;
+}
+
+.ai-mission-card__hint {
+  margin-top: 0.7rem;
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color--light);
+  opacity: 0.75;
+}
+
+/* Estados da missão, versão amigável */
+.ai-states {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin: 1.25rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius-lg);
+  background: var(--ai-surface-alt);
+}
+
+.ai-states__arrow {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85rem;
+}
+
+.ai-states__branch {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  padding-top: 0.6rem;
+  margin-top: 0.4rem;
+  border-top: 1px dashed var(--ai-border);
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ==========================================================================
+   Calculadora de preço
+   ========================================================================== */
+.price-calc {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--ai-radius-lg);
+  background: var(--ai-surface-alt);
+  border: 1px solid var(--ai-border);
+  max-width: 28rem;
+}
+
+.price-calc__row {
+  display: flex;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.price-calc label {
+  flex: 1;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color--light);
+}
+
+.price-calc input {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--ai-radius-sm);
+  border: 1px solid var(--ai-border);
+  background: var(--ai-surface);
+  color: var(--md-default-fg-color);
+  font: inherit;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.price-calc input:focus-visible {
+  outline: 2px solid var(--ai-primary);
+  outline-offset: 1px;
+}
+
+.calc-result {
+  min-height: 3rem;
+  border-radius: var(--ai-radius-md);
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  transition: background-color 0.2s ease;
 }
 
-.flow-arrow {
-  text-align: center;
-  color: var(--md-primary-fg-color);
-  font-size: 1.4rem;
-  line-height: 1.6;
-  opacity: 0.8;
+.calc-result:empty {
+  padding: 0;
+  min-height: 0;
 }
 
-/* --- Linha do tempo (releases) --- */
+.calc-result__figure {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+}
+
+.calc-result--good {
+  background: var(--ai-success-bg);
+  color: var(--ai-success);
+  border: 1px solid var(--ai-success-border);
+}
+
+.calc-result--neutral {
+  background: var(--ai-neutral-bg);
+  color: var(--md-default-fg-color--light);
+}
+
+/* ==========================================================================
+   Lojas: <details>/<summary> semânticos
+   ========================================================================== */
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 0.85rem;
+  margin: 1.25rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.store-card {
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius-md);
+  background: var(--ai-surface-alt);
+  overflow: hidden;
+}
+
+.store-card summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  transition: color 0.15s ease;
+}
+
+.store-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.store-card summary:hover {
+  color: var(--ai-primary);
+}
+
+.store-card summary:focus-visible {
+  outline: 2px solid var(--ai-primary);
+  outline-offset: -2px;
+}
+
+.store-card .store-chevron {
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+  transition: transform 0.2s ease;
+}
+
+.store-card[open] .store-chevron {
+  transform: rotate(180deg);
+}
+
+.store-card .store-more {
+  padding: 0 1.1rem 1rem;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ==========================================================================
+   FAQ: accordion mais respirável
+   ========================================================================== */
+.md-typeset details.question {
+  border-radius: var(--ai-radius-md);
+  border: 1px solid var(--ai-border);
+  margin-bottom: 0.75rem;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.md-typeset details.question > summary {
+  padding: 0.95rem 2.4rem 0.95rem 1.1rem;
+  font-weight: 700;
+  min-height: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Indicador +/- no lugar da seta padrão do tema */
+.md-typeset details.question > summary::after {
+  content: "+" !important;
+  background: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ai-primary);
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%) !important;
+  transition: none;
+}
+
+.md-typeset details.question[open] > summary::after {
+  content: "−" !important;
+}
+
+.md-typeset details.question > summary:focus-visible {
+  outline: 2px solid var(--ai-primary);
+  outline-offset: -2px;
+}
+
+.md-typeset details.question > *:not(summary) {
+  padding-top: 0.15rem;
+}
+
+/* ==========================================================================
+   Releases: linha do tempo
+   ========================================================================== */
 .timeline {
-  border-left: 3px solid var(--md-primary-fg-color);
+  border-left: 3px solid var(--ai-border);
   margin: 1.5rem 0 1.5rem 0.5rem;
   padding-left: 1.4rem;
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 1.4rem;
+  padding-bottom: 1.5rem;
 }
 
 .timeline-item:last-child {
@@ -188,19 +1015,32 @@
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 50%;
-  background: var(--md-primary-fg-color);
+  background: var(--ai-border);
+}
+
+.timeline-item.is-current {
+  padding: 0.9rem 1.1rem;
+  margin-left: -1.1rem;
+  border-radius: var(--ai-radius-md);
+  background: var(--ai-surface-alt);
+  border: 1px solid var(--ai-primary);
 }
 
 .timeline-item.is-current::before {
   width: 0.95rem;
   height: 0.95rem;
-  left: -1.83rem;
-  top: 0.25rem;
-  box-shadow: 0 0 0 4px var(--md-primary-fg-color--light);
+  left: -1.85rem;
+  top: 1.15rem;
+  background: var(--ai-primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
 }
 
 .timeline-version {
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.timeline-item.is-current .timeline-version {
+  color: var(--ai-primary);
 }
 
 .timeline-date {
@@ -210,20 +1050,12 @@
 }
 
 .timeline-item p {
-  margin: 0.2rem 0 0;
+  margin: 0.25rem 0 0;
 }
 
-/* --- Selo "estado" (badges de status) --- */
-.status-pill {
-  display: inline-block;
-  padding: 0.15rem 0.65rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  background: var(--md-default-fg-color--lightest);
-}
-
-/* --- Revelar suavemente ao rolar a página --- */
+/* ==========================================================================
+   Revelar ao rolar
+   ========================================================================== */
 .reveal-init {
   opacity: 0;
   transform: translateY(14px);
@@ -235,111 +1067,155 @@
   transform: none;
 }
 
-/* --- Cards com um pouco mais de vida ao passar o mouse --- */
-.md-typeset .grid.cards > ul > li,
-.md-typeset .grid.cards > ol > li {
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+/* ==========================================================================
+   Footer de produto
+   ========================================================================== */
+.ai-footer {
+  background: var(--ai-surface-alt);
+  border-top: 1px solid var(--ai-border);
 }
 
-.md-typeset .grid.cards > ul > li:hover,
-.md-typeset .grid.cards > ol > li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-}
-
-/* --- Calculadora de queda de preço --- */
-.price-calc {
-  margin: 1.5rem 0;
-  padding: 1.1rem 1.25rem;
-  border-radius: 0.75rem;
-  background: var(--md-default-fg-color--lightest);
-  max-width: 26rem;
-}
-
-.price-calc label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 0.85rem;
-}
-
-.price-calc input {
-  display: block;
-  width: 100%;
-  margin-top: 0.3rem;
-  padding: 0.5rem 0.7rem;
-  border-radius: 0.4rem;
-  border: 1px solid var(--md-default-fg-color--lighter);
-  background: var(--md-default-bg-color);
-  color: var(--md-default-fg-color);
-  font: inherit;
-  box-sizing: border-box;
-}
-
-.price-calc input:focus {
-  outline: 2px solid var(--md-primary-fg-color);
-  outline-offset: 1px;
-}
-
-.calc-result {
-  min-height: 1.2rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-top: 0.4rem;
-}
-
-.calc-result--good {
-  color: #2e7d32;
-}
-
-.calc-result--neutral {
-  opacity: 0.75;
-}
-
-/* --- Cards de loja: clicáveis para saber mais --- */
-.store-grid {
+.ai-footer__inner {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 2.75rem 1.2rem 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-  gap: 0.85rem;
-  margin: 1.25rem 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2rem;
 }
 
-.store-card {
-  cursor: pointer;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--md-default-fg-color--lighter);
-  border-radius: 0.6rem;
-  background: var(--md-default-fg-color--lightest);
+.ai-footer__name {
+  font-weight: 800;
   font-size: 1.05rem;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  margin: 0 0 0.35rem;
+  color: var(--md-default-fg-color);
 }
 
-.store-card:hover,
-.store-card:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-  outline: none;
-}
-
-.store-card .store-more {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
+.ai-footer__tagline {
   font-size: 0.85rem;
-  transition: max-height 0.25s ease, opacity 0.25s ease, margin-top 0.25s ease;
+  color: var(--md-default-fg-color--light);
+  margin: 0;
+  max-width: 16rem;
 }
 
-.store-card.is-expanded .store-more {
-  max-height: 6rem;
-  opacity: 0.85;
-  margin-top: 0.5rem;
+.ai-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.store-card .store-hint {
-  display: block;
-  font-size: 0.7rem;
-  opacity: 0.55;
-  margin-top: 0.4rem;
+.ai-footer__heading {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 0.2rem;
+}
+
+.ai-footer__col a {
+  font-size: 0.87rem;
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+
+.ai-footer__col a:hover {
+  color: var(--ai-primary);
+  text-decoration: underline;
+}
+
+.ai-footer__bottom {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1.1rem 1.2rem 1.6rem;
+  border-top: 1px solid var(--ai-border);
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.ai-footer__bottom p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Responsivo
+   ========================================================================== */
+@media screen and (max-width: 76.1875em) {
+  .ai-home-content .md-content__inner {
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 60em) {
+  .ai-hero__inner {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.1rem 2rem;
+    text-align: left;
+  }
+
+  .ai-hero__visual {
+    order: -1;
+  }
+
+  .ai-chat-frame--preview {
+    max-width: 24rem;
+    margin: 0 auto;
+  }
+
+  .ai-journey {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-journey__arrow {
+    transform: rotate(90deg);
+  }
+
+  .ai-footer__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ai-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 44.9975em) {
+  .ai-step {
+    grid-template-columns: 2.4rem 1fr;
+    padding: 1rem;
+  }
+
+  .price-calc__row {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .ai-footer__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-msg {
+    max-width: 94%;
+  }
+}
+
+/* ==========================================================================
+   Acessibilidade / preferências do usuário
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ai-primary);
+  outline-offset: 2px;
 }
