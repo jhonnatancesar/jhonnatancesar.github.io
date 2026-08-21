@@ -1,0 +1,70 @@
+site_name: AIShoppingAgent
+site_description: >-
+  Agente de compras que monitora preços em várias lojas e avisa você no
+  Telegram na hora certa de comprar.
+site_url: https://jhonnatancesar.github.io/AIShoppingAgent-site/
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Alternar para modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Alternar para modo claro
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Sobre: sobre.md
+  - Como funciona: como-funciona.md
+  - Recursos: recursos.md
+  - Lojas suportadas: lojas.md
+  - Monitoramento de preços: monitoramento.md
+  - Alertas pelo Telegram: telegram.md
+  - Missões: missoes.md
+  - Demonstração: demonstracao.md
+  - Novidades: novidades.md
+  - Releases: releases.md
+  - Começar a usar: comecar.md
+  - FAQ: faq.md
+
+copyright: >
+  AIShoppingAgent — projeto pessoal independente. Não afiliado a nenhuma das
+  lojas mencionadas.
