@@ -2,54 +2,58 @@
 description: Os principais recursos do AIShoppingAgent — missões, alertas, histórico de preço e privacidade.
 ---
 
-# Recursos
+# Por que usar o AIShoppingAgent
+
+Não é só uma lista de funções. Cada coisa que o AIShoppingAgent faz existe para resolver um incômodo real de quem acompanha preço. Aqui está o porquê de cada uma.
 
 <div class="grid cards" markdown>
 
--   :material-message-text-outline:{ .lg .middle } **Criação de missão por linguagem natural**
+-   :material-message-text-outline:{ .lg .middle } **Você fala do seu jeito**
 
-    Descreva o produto com suas próprias palavras — a IA interpreta e monta a missão de acompanhamento.
+    Nada de formulário nem menu confuso. Diga o que procura com suas próprias palavras, e o AIShoppingAgent entende.
 
--   :material-radar:{ .lg .middle } **Monitoramento contínuo**
+-   :material-radar:{ .lg .middle } **Você para de checar preço todo dia**
 
-    A missão permanece ativa acompanhando o preço até você pausar ou cancelar; sem prazo de expiração por padrão.
+    Depois que o acompanhamento começa, quem continua olhando os preços é ele — não você.
 
--   :material-store-search-outline:{ .lg .middle } **Múltiplas lojas por missão**
+-   :material-store-search-outline:{ .lg .middle } **Várias lojas de uma vez**
 
-    Escolha uma ou várias lojas suportadas para a mesma missão, ao mesmo tempo.
+    Um mesmo produto pode ser acompanhado em mais de uma loja ao mesmo tempo, para você não perder a melhor oferta entre elas.
 
--   :material-history:{ .lg .middle } **Histórico completo de preço**
+-   :material-history:{ .lg .middle } **Ele sabe quando o preço caiu de verdade**
 
-    Toda observação de preço coletada é preservada — nada é apagado ou sobrescrito.
+    Como cada preço encontrado fica guardado, dá para comparar com o que já foi visto antes — e perceber uma queda real, não só um número que parece baixo.
 
--   :material-arrow-down-bold-circle-outline:{ .lg .middle } **Alerta de queda de preço**
+-   :material-arrow-down-bold-circle-outline:{ .lg .middle } **Aviso quando o preço cai**
 
-    Avisa quando o preço cai em relação ao que já foi visto naquela missão.
+    Assim que o preço de um produto que você está acompanhando fica menor do que já foi visto, você fica sabendo.
 
--   :material-bullseye-arrow:{ .lg .middle } **Alerta de preço-alvo**
+-   :material-bullseye-arrow:{ .lg .middle } **Aviso quando chega no valor que você quer**
 
-    Defina o valor que considera bom e receba um aviso assim que o preço chegar lá.
+    Defina o preço que considera bom, e receba um aviso assim que ele for atingido.
 
--   :material-cash-multiple:{ .lg .middle } **Preço à vista e parcelado**
+-   :material-cash-multiple:{ .lg .middle } **Você já vê como pode pagar**
 
-    Quando a própria loja informa, o alerta mostra também as condições de parcelamento — nunca um valor calculado.
+    Quando a própria loja informa, o alerta também mostra as opções de parcelamento — nunca um valor inventado.
 
--   :material-telegram:{ .lg .middle } **Tudo pelo Telegram**
+-   :material-telegram:{ .lg .middle } **O aviso chega onde você já conversa**
 
-    Criar, pausar, editar, cancelar e listar missões — sem sair do chat.
+    Tudo pelo Telegram: criar, pausar, editar, cancelar e consultar suas missões, sem sair do chat.
 
--   :material-toggle-switch-outline:{ .lg .middle } **Preferências de notificação**
+-   :material-toggle-switch-outline:{ .lg .middle } **Você escolhe o que quer ser avisado**
 
-    Ative ou desative separadamente alertas de queda de preço e de preço-alvo atingido.
+    Ative ou desative separadamente os avisos de queda de preço e de preço-alvo, do jeito que fizer sentido para você.
 
--   :material-shield-lock-outline:{ .lg .middle } **Privacidade por padrão**
+-   :material-shield-lock-outline:{ .lg .middle } **Sua conversa é só sua**
 
-    Interação restrita ao seu chat privado; a IA recebe apenas o texto necessário para interpretar seu pedido.
+    A interação fica restrita ao seu chat privado, e só o texto necessário para entender seu pedido é usado para interpretá-lo.
 
 </div>
 
-## O que o AIShoppingAgent não faz (por escolha de design)
+## O que ele deliberadamente não faz
 
-- **Não compra automaticamente.** Ele monitora e avisa; a compra é sempre feita por você, direto na loja.
-- **Não inventa preço.** Nenhum valor mostrado é estimado ou calculado — todo preço vem de uma coleta real.
-- **Não compartilha mais dados do que o necessário.** Veja o que é enviado a terceiros e por quê nas [Perguntas frequentes](faq.md).
+Algumas coisas ficam de fora por escolha, não por limitação:
+
+- **Ele não compra por você.** Monitora e avisa — a compra, sempre, acontece por sua conta, direto na loja.
+- **Ele não inventa preço.** Todo valor mostrado vem de uma consulta real feita na loja; nada é estimado.
+- **Ele não usa seus dados além do necessário.** Veja o que é realmente compartilhado, e com quem, nas [Perguntas frequentes](faq.md).

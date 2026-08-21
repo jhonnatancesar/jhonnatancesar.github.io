@@ -2,25 +2,43 @@
 description: Como o AIShoppingAgent acompanha o histórico de preço e decide quando um alerta deve ser enviado.
 ---
 
-# Monitoramento de preços
+# Como ele acompanha o preço
 
-## Como o preço é acompanhado
+Em uma frase: o AIShoppingAgent consulta o produto de tempo em tempo e guarda o que encontra. Quando aparece uma mudança que parece interessante, ele compara com tudo que já viu antes para decidir se realmente vale a pena te avisar.
 
-Cada missão ativa gera consultas periódicas às lojas selecionadas. Toda consulta que encontra o produto registra uma nova observação de preço — o histórico completo fica preservado, sem sobrescrever observações anteriores.
+Sem entrar em detalhes técnicos, é assim que isso funciona na prática:
 
-## Preço à vista e parcelado
+## Nada se perde pelo caminho
 
-O preço à vista é a referência usada para comparações e alertas. Quando a própria loja informa condições de parcelamento (quantidade de parcelas, valor de cada uma, se há juros), essa informação também é exibida junto à oferta — mas **nunca** é calculada ou estimada pelo AIShoppingAgent: só aparece quando a loja declara explicitamente.
+Cada vez que o AIShoppingAgent confere o preço de um produto que você está acompanhando, ele guarda o que encontrou — sem apagar o que já tinha visto antes. É justamente esse histórico que permite diferenciar uma queda de preço de verdade de um número que só parece uma promoção.
 
-## Quando um alerta é disparado
+## Preço à vista e parcelado, sem inventar nada
 
-Dois tipos de alerta existem, e podem ser ativados ou desativados de forma independente:
+O preço à vista é sempre a referência principal. Quando a própria loja informa como fica o parcelamento — quantas vezes, quanto fica cada parcela, se tem juros —, essa informação aparece junto. Mas só quando a loja realmente declara isso: o AIShoppingAgent nunca calcula ou estima um valor de parcela por conta própria.
 
-- **Queda de preço** — disparado quando o preço de uma oferta já vista pela missão cai em relação à observação anterior.
-- **Preço-alvo atingido** — disparado quando o preço fica igual ou menor que o valor-alvo definido na missão.
+## Experimente a lógica você mesmo
 
-Um alerta só é enviado quando existe de fato uma queda ou um alvo atingido — o AIShoppingAgent não notifica preços estáveis nem reenvia o mesmo alerta repetidamente enquanto o preço permanece no mesmo patamar.
+Digite um preço que já foi visto antes e um preço de agora, e veja como o AIShoppingAgent decidiria se isso é ou não motivo para um alerta:
 
-## Precisão em vez de estimativa
+<div class="price-calc" markdown>
+<label>Preço que você já viu antes
+<input type="number" id="calc-before" inputmode="decimal" placeholder="Ex.: 799,90"></label>
+<label>Preço de agora
+<input type="number" id="calc-now" inputmode="decimal" placeholder="Ex.: 689,90"></label>
+<div class="calc-result"></div>
+</div>
 
-Nenhum preço mostrado é inferido: todo valor exibido — à vista, parcelado ou de frete — vem diretamente da coleta mais recente feita na loja. Quando uma informação não está disponível na fonte, o AIShoppingAgent mostra que ela é desconhecida em vez de presumir um valor.
+Isso é só para ilustrar a lógica — o AIShoppingAgent faz essa mesma comparação sozinho, com os preços reais que ele encontra nas lojas.
+
+## Quando você é avisado
+
+Existem dois motivos para receber um alerta, e você decide quais deles quer ativar:
+
+- **O preço caiu** em relação ao que já tinha sido visto antes naquela missão.
+- **O preço chegou no valor que você definiu como alvo** — o número que você disse que consideraria bom.
+
+Preço estável não gera aviso nenhum, e o mesmo alerta não é reenviado várias vezes enquanto o preço continuar no mesmo patamar. Você só é incomodado quando realmente há algo novo para ver.
+
+## Informação real, nunca chute
+
+Nenhum valor mostrado é inventado ou estimado — preço, parcelamento ou frete, tudo vem direto da consulta mais recente feita na loja. Quando alguma informação simplesmente não está disponível, o AIShoppingAgent mostra que ela é desconhecida, em vez de arriscar um palpite.

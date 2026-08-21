@@ -4,16 +4,16 @@ description: Os destaques mais recentes do AIShoppingAgent.
 
 # Novidades
 
-Os destaques mais recentes do AIShoppingAgent. Para o histórico completo de versões, veja [Releases](releases.md).
+Um resumo do que mudou recentemente para quem usa o AIShoppingAgent. Para ver todo o histórico de versões, com data de cada uma, veja [Releases](releases.md).
 
-## Preço parcelado nas ofertas
+## 💳 Agora dá para ver como parcelar
 
-As ofertas passaram a mostrar, além do preço à vista, as condições de parcelamento — quantidade de parcelas, valor de cada uma e se há juros — sempre que a própria loja informa essa condição. Nada é calculado ou estimado: só aparece o que a loja declara.
+As ofertas passaram a mostrar, além do preço à vista, as opções de parcelamento — quantas vezes, quanto fica cada parcela e se tem juros — sempre que a própria loja informa isso. Nada é calculado por conta própria: só aparece o que a loja realmente declara.
 
-## Mais confiabilidade nos alertas do Telegram
+## 🔔 Alertas mais confiáveis
 
-Os links de oferta enviados nas mensagens de alerta foram ajustados para abrir corretamente em todas as situações, e a entrega de alertas ficou mais confiável.
+Ajustamos os links de oferta que chegam nas mensagens de alerta para abrirem corretamente em qualquer situação, e a entrega dos avisos ficou mais confiável de ponta a ponta.
 
-## Melhor identificação do produto certo
+## 🎯 Mais precisão para achar o produto certo
 
-A criação de missões ficou mais precisa na hora de entender qual produto (e qual configuração específica) você realmente quer acompanhar, reduzindo resultados fora do que foi pedido.
+Melhoramos a forma como o AIShoppingAgent entende qual produto — e qual configuração específica — você realmente quer acompanhar, reduzindo resultados que não tinham nada a ver com o que foi pedido.

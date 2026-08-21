@@ -4,59 +4,71 @@ description: O agente que monitora preços por você e avisa na hora certa de co
 
 # AIShoppingAgent
 
-**Descreva o que você quer comprar. O AIShoppingAgent cuida de ficar de olho no preço — e te avisa no Telegram assim que valer a pena.**
+## Procurando alguma coisa para comprar?
+
+Conte para o AIShoppingAgent o que você quer. Ele fica de olho no preço nas lojas para você e te avisa pelo Telegram assim que encontrar uma oportunidade que realmente vale a pena.
 
 [Em breve](comecar.md){ .md-button .md-button--primary }
 [Ver como funciona](como-funciona.md){ .md-button }
 
 ---
 
-## O problema
-
-Encontrar um bom preço exige checar várias lojas, todos os dias, na esperança de pegar uma promoção no momento certo. Ninguém tem tempo pra isso — e a maioria das promoções passa despercebida.
-
-## O que o AIShoppingAgent faz
-
-Você conta o que quer comprar, com suas próprias palavras, pelo Telegram. O agente entende o pedido, cria uma **missão** de acompanhamento e passa a monitorar o preço desse produto continuamente nas lojas que você escolher. Quando o preço cai ou atinge o valor que você definiu como alvo, você recebe um alerta — com o link direto para a oferta. A compra em si sempre acontece na loja, por sua conta; o agente nunca compra nada automaticamente.
+## Em poucas palavras
 
 <div class="grid cards" markdown>
 
--   :material-message-text-outline:{ .lg .middle } **Você descreve, a IA entende**
+-   :material-help-circle-outline:{ .lg .middle } **O que é?**
 
-    Nada de formulário. Diga o que procura em linguagem natural e o agente interpreta.
+    Um assistente que acompanha o preço de um produto para você, dia após dia.
 
--   :material-radar:{ .lg .middle } **Monitoramento contínuo**
+-   :material-chat-outline:{ .lg .middle } **O que eu preciso fazer?**
 
-    A missão fica ativa acompanhando o preço até você pausar ou cancelar.
+    Só dizer o que você quer comprar, com suas próprias palavras.
 
--   :material-bell-ring-outline:{ .lg .middle } **Alertas no Telegram**
+-   :material-magnify-scan:{ .lg .middle } **O que ele faz depois?**
 
-    Queda de preço ou preço-alvo atingido chegam direto no seu chat.
+    Ele procura o produto nas lojas e continua acompanhando o preço sozinho.
 
--   :material-history:{ .lg .middle } **Histórico de preço**
+-   :material-bell-ring-outline:{ .lg .middle } **Como eu fico sabendo?**
 
-    Cada observação de preço fica registrada, sem apagar o que já foi visto.
+    Ele te manda uma mensagem no Telegram quando encontra algo bom.
 
 </div>
 
-## Como acompanhar preços
+## Do seu pedido até o alerta
 
-1. **Descreva o produto** — pelo chat do Telegram, em linguagem natural.
-2. **Escolha as lojas** — entre as opções suportadas.
-3. **O agente monitora** — de forma contínua, sem você precisar checar nada.
-4. **Você recebe o alerta** — quando o preço cair ou atingir o valor-alvo definido.
-5. **Você decide** — a compra é sempre feita por você, direto na loja.
+<div class="flow" markdown>
+<div class="flow-step">Você pede</div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step">O bot entende o que você quer</div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step">Ele começa a acompanhar o preço</div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step">Os preços vão mudando com o tempo</div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step">Uma oferta realmente boa aparece</div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step">Você recebe o alerta no Telegram</div>
+</div>
 
-[Ver o passo a passo completo](como-funciona.md){ .md-button }
+Não é preciso entender nada de tecnologia para usar. Você conversa, e o AIShoppingAgent cuida do resto.
 
-## Lojas suportadas
+## Por que vale a pena
 
-Pichau, Terabyte, Amazon e KaBuM! na V1, com Mercado Livre, Shopee e AliExpress previstos para o futuro.
+- **Você para de checar preço todo dia.** Uma vez que você pede para acompanhar um produto, o trabalho de ficar voltando nas lojas passa a ser dele, não seu.
+- **Ele sabe quando um preço realmente caiu.** Como guarda o histórico do que já viu, consegue perceber uma queda de verdade — não só um número que parece baixo.
+- **O aviso chega onde você já está.** Direto no Telegram, sem mais um aplicativo para instalar ou lembrar de abrir.
+
+[Ver todos os motivos](recursos.md){ .md-button }
+
+## Quais lojas ele acompanha
+
+Hoje: **Pichau, Terabyte, Amazon e KaBuM!** — e outras lojas conhecidas, como Mercado Livre e Shopee, estão nos planos para o futuro.
 
 [Ver todas as lojas](lojas.md){ .md-button }
 
 ## Uso público
 
-O AIShoppingAgent ainda está em preparação para uso público. Quando estiver disponível, toda a interação vai acontecer num chat privado do Telegram — sem instalar nada, sem painel separado.
+O AIShoppingAgent ainda está em preparação para ficar disponível para qualquer pessoa. Quando chegar essa hora, tudo vai continuar acontecendo do mesmo jeito simples: uma conversa no Telegram, sem instalar nada e sem painel separado.
 
 [Uso público em breve](comecar.md){ .md-button .md-button--primary }

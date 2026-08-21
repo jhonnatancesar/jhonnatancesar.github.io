@@ -2,26 +2,42 @@
 description: Quais lojas o AIShoppingAgent já monitora hoje — Pichau, Terabyte, Amazon e KaBuM! — e quais estão previstas para o futuro.
 ---
 
-# Lojas suportadas
+# Em quais lojas ele procura
 
-Cada missão pode acompanhar uma ou várias das lojas abaixo, escolhidas por você no momento da criação.
+Quando você cria uma missão (o nome que damos para um pedido de acompanhamento), você escolhe em qual loja — ou em quais lojas — o AIShoppingAgent deve procurar. Pode ser uma só ou várias ao mesmo tempo.
 
-## Disponíveis
+## Disponíveis agora
 
-| Loja | Tipo |
-| --- | --- |
-| Pichau | Varejista |
-| Terabyte | Varejista |
-| Amazon | Marketplace (inclui vendedores terceiros) |
-| KaBuM! | Varejista |
+Clique em uma loja para saber um pouco mais sobre ela.
 
-## Futuro
+<ul class="store-grid">
+<li class="store-card">🏬 <strong>Pichau</strong>
+<div class="store-more">Loja de hardware e periféricos bem conhecida por quem monta o próprio computador.</div>
+<span class="store-hint">toque para saber mais</span>
+</li>
+<li class="store-card">🏬 <strong>Terabyte</strong>
+<div class="store-more">Outra grande referência em hardware e componentes de PC no Brasil.</div>
+<span class="store-hint">toque para saber mais</span>
+</li>
+<li class="store-card">🛒 <strong>Amazon</strong>
+<div class="store-more">Inclui também ofertas de outros vendedores dentro da Amazon, não só da própria loja.</div>
+<span class="store-hint">toque para saber mais</span>
+</li>
+<li class="store-card">🏬 <strong>KaBuM!</strong>
+<div class="store-more">Uma das maiores lojas de tecnologia e games do país.</div>
+<span class="store-hint">toque para saber mais</span>
+</li>
+</ul>
 
-As lojas abaixo já aparecem mencionadas no bot como possibilidades futuras, mas ainda **não** podem ser selecionadas nem são monitoradas:
+!!! note "Uma loja pode ficar temporariamente indisponível"
+    De vez em quando, uma loja específica pode ficar fora do ar para o AIShoppingAgent por um tempo — geralmente por mudanças que a própria loja faz nas suas proteções contra automação, fora do nosso controle. Isso nunca afeta as demais lojas nem as missões que você já criou; assim que possível, o acompanhamento volta ao normal.
+
+## No radar para o futuro
+
+Estas ainda não podem ser escolhidas hoje, mas já estão nos planos:
 
 - Mercado Livre
 - Shopee
 - AliExpress
 
-!!! note "Sobre disponibilidade"
-    A cobertura de uma loja específica pode variar ao longo do tempo por motivos fora do controle do AIShoppingAgent — por exemplo, mudanças de proteção anti-automação do próprio site. Isso não afeta as demais lojas nem o funcionamento das suas missões.
+Assim que alguma delas ficar disponível, ela passa a aparecer na lista de lojas que você pode escolher — sem você precisar fazer nada.

@@ -4,50 +4,34 @@ description: O passo a passo de como o AIShoppingAgent monitora preços e avisa 
 
 # Como funciona
 
-O AIShoppingAgent funciona inteiramente por conversa, num chat privado do Telegram. Não existe painel separado nem instalação — você fala com o bot como falaria com uma pessoa.
+Tudo acontece numa conversa, dentro do Telegram — o mesmo app de mensagens que você provavelmente já usa. Não existe painel, não existe aplicativo separado para instalar, não existe cadastro complicado. Você fala com o AIShoppingAgent como falaria com uma pessoa que está te ajudando a caçar uma promoção.
 
-## Passo a passo
+## O caminho, passo a passo
 
-<div class="grid cards" markdown>
+**1. Você conta o que está procurando.** Do seu jeito, com suas próprias palavras: "quero um SSD NVMe de 2TB, de preferência até R$ 700". Não existe formulário para preencher nem menu complicado para navegar — é como mandar uma mensagem para um amigo.
 
--   :material-numeric-1-circle-outline: **Você descreve o que quer**
+**2. O AIShoppingAgent entende o pedido.** Ele lê o que você escreveu e monta, sozinho, o que estamos chamando aqui de uma **missão**: o registro de que você quer acompanhar aquele produto. A partir de agora, sempre que falarmos em "missão", é isso — um pedido seu que ficou ativo.
 
-    Em linguagem natural: o produto, a configuração desejada, um preço-alvo se você já tiver um em mente.
+**3. Você escolhe onde procurar.** Entre as [lojas que ele consegue acompanhar](lojas.md), você diz uma ou várias — pode ser só numa loja específica ou em todas ao mesmo tempo.
 
--   :material-numeric-2-circle-outline: **A IA interpreta o pedido**
+**4. A missão fica de olho, sozinha.** A partir daqui, você não precisa fazer mais nada. O AIShoppingAgent continua checando o preço com o tempo, sem prazo para parar — a não ser que você mesmo peça para pausar ou cancelar.
 
-    O agente entende a descrição e transforma em uma missão de acompanhamento — sem formulário, sem menu rígido.
+**5. Cada preço encontrado fica guardado.** Isso é o que permite, mais para frente, dizer com segurança se um preço realmente caiu ou se só parece uma promoção. Nada do que já foi visto se perde.
 
--   :material-numeric-3-circle-outline: **Você escolhe as lojas**
+**6. Quando vale a pena, o aviso chega.** Se o preço cair em relação ao que já foi visto, ou se chegar no valor que você definiu como alvo, o Telegram avisa na hora — com o link direto para a oferta.
 
-    Entre as [lojas suportadas](lojas.md), selecione uma ou várias para essa missão.
+## O que vem no alerta
 
--   :material-numeric-4-circle-outline: **A missão fica ativa**
+A mensagem mostra o preço encontrado — à vista e, quando a própria loja informa, também as opções de parcelamento — junto com o link direto para o anúncio. Dali para frente, a decisão é toda sua: a compra acontece na loja, fora do AIShoppingAgent.
 
-    O agente passa a monitorar continuamente o preço do produto nas lojas escolhidas, sem prazo de expiração por padrão.
+## Depois de criar, você continua no controle
 
--   :material-numeric-5-circle-outline: **O preço é acompanhado**
+Uma missão não é algo que você cria e esquece — ela fica sob seu controle o tempo todo, direto pelo mesmo chat:
 
-    Cada nova consulta gera um registro de preço, preservando o histórico completo — nada é sobrescrito.
+- ver todas as suas missões ativas, pausadas e canceladas;
+- pausar uma missão sem perder nada do que já foi acompanhado, e retomar quando quiser;
+- trocar as lojas monitoradas ou o preço-alvo de uma missão já criada;
+- cancelar de vez uma missão que não interessa mais;
+- escolher separadamente se quer ser avisado de queda de preço, de preço-alvo atingido, ou dos dois.
 
--   :material-numeric-6-circle-outline: **Você recebe o alerta**
-
-    Quando o preço cai em relação ao que já foi visto, ou atinge o valor-alvo definido, o Telegram avisa na hora, com o link da oferta.
-
-</div>
-
-## O que acontece depois do alerta
-
-O alerta mostra o preço encontrado — à vista e, quando a própria loja informa, também as condições de parcelamento — e um link direto para o anúncio. A partir daí, a decisão é sua: a compra acontece diretamente na loja, fora do AIShoppingAgent.
-
-## Gerenciando suas missões
-
-Pelo próprio chat você pode:
-
-- listar as missões ativas, pausadas e canceladas;
-- pausar e retomar uma missão sem perder o histórico;
-- editar lojas monitoradas ou o preço-alvo;
-- cancelar uma missão que não interessa mais;
-- ativar ou desativar, separadamente, alertas de queda de preço e de preço-alvo atingido.
-
-Veja mais detalhes em [Missões](missoes.md) e em [Telegram](telegram.md).
+Quer ver esse controle mais de perto? Veja [Missões](missoes.md) e [Telegram](telegram.md).

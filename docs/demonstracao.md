@@ -1,44 +1,25 @@
 ---
-description: Um exemplo ilustrativo de conversa com o AIShoppingAgent, da criação de uma missão ao alerta recebido.
+description: Uma demonstração interativa de conversa com o AIShoppingAgent, da criação de uma missão ao alerta recebido.
 ---
 
-# Demonstração
+# Veja como seria, na prática
 
-O exemplo abaixo é ilustrativo — mostra o tipo de conversa que acontece com o AIShoppingAgent, não uma captura real de um usuário.
+A conversa abaixo é interativa: clique no botão para ir avançando, mensagem por mensagem, como se estivesse acompanhando de verdade. É um exemplo ilustrativo — não uma captura real de um usuário —, mas mostra exatamente o tipo de interação que acontece com o AIShoppingAgent.
 
-## Criando uma missão
+<div class="chat chat-demo" markdown>
+<div class="chat-msg user"><span class="who">Você</span>`/criar_missao`</div>
+<div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Me conta o que você quer acompanhar. Pode descrever com suas palavras.</div>
+<div class="chat-msg user"><span class="who">Você</span>Um SSD NVMe de 2TB, de preferência abaixo de R$ 700.</div>
+<div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Entendi! Vou acompanhar um <strong>SSD NVMe 2TB</strong> com preço-alvo de <strong>R$ 700,00</strong>. Em quais lojas você quer que eu procure?<br><br>1 · Pichau&nbsp;&nbsp;2 · Terabyte&nbsp;&nbsp;3 · Amazon&nbsp;&nbsp;4 · KaBuM!&nbsp;&nbsp;5 · Todas</div>
+<div class="chat-msg user"><span class="who">Você</span>5</div>
+<div class="chat-msg bot"><span class="who">AIShoppingAgent</span>✅ Combinado! Vou acompanhar o preço continuamente e te aviso assim que cair ou chegar no valor que você pediu.</div>
+<div class="chat-msg bot"><span class="who">AIShoppingAgent</span>🔔 <strong>Preço-alvo atingido!</strong><br><br><strong>SSD NVMe 2TB</strong> — KaBuM!<br>💰 À vista: R$ 689,90<br>💳 Parcelado: 3x de R$ 229,97 sem juros<br><br>🔗 Ver anúncio</div>
+<div class="chat-msg user"><span class="who">Você</span>`/listar_missoes`</div>
+<div class="chat-msg bot"><span class="who">AIShoppingAgent</span>Você tem 1 missão ativa:<br><br>1 · SSD NVMe 2TB — alvo R$ 700,00 — Pichau, Terabyte, Amazon, KaBuM!</div>
+</div>
 
-> **Você:** `/criar_missao`
->
-> **AIShoppingAgent:** Me conta o que você quer acompanhar. Pode descrever com suas palavras.
->
-> **Você:** um SSD NVMe de 2TB, de preferência abaixo de R$ 700
->
-> **AIShoppingAgent:** Entendi! Vou acompanhar **SSD NVMe 2TB** com preço-alvo de **R$ 700,00**. Em quais lojas você quer que eu procure?
->
-> `1` Pichau · `2` Terabyte · `3` Amazon · `4` KaBuM! · `5` Todas
->
-> **Você:** `5`
->
-> **AIShoppingAgent:** ✅ Missão criada! Vou monitorar o preço continuamente e te aviso assim que cair ou atingir o valor-alvo.
+Se o botão acima não aparecer (por exemplo, com JavaScript desligado), a conversa completa continua visível normalmente, sem nenhum passo escondido.
 
-## Recebendo um alerta
+A partir daí, editar as lojas ou o preço-alvo, pausar ou cancelar essa missão é só mais uma mensagem no mesmo chat — sem precisar recriar nada do zero.
 
-> **AIShoppingAgent:** 🔔 **Preço-alvo atingido!**
->
-> **SSD NVMe 2TB** — KaBuM!
->
-> 💰 À vista: R$ 689,90
-> 💳 Parcelado: 3x de R$ 229,97 sem juros
->
-> [🔗 Ver anúncio]
-
-## Gerenciando a missão depois
-
-> **Você:** `/listar_missoes`
->
-> **AIShoppingAgent:** Você tem 1 missão ativa:
->
-> `1` SSD NVMe 2TB — alvo R$ 700,00 — Pichau, Terabyte, Amazon, KaBuM!
-
-A partir daí, editar lojas ou preço-alvo, pausar ou cancelar a missão é só mais uma mensagem no mesmo chat.
+[Ver como funciona por completo](como-funciona.md){ .md-button }
